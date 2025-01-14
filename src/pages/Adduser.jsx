@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/UserContext'; // Import UserContext
 
-const AddUserPage = ({ addUser }) => {
+const AddUserPage = () => {
+  const { addUser } = useContext(UserContext); // Access addUser from context
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +20,7 @@ const AddUserPage = ({ addUser }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.name && formData.email) {
-      addUser(formData); 
+      addUser(formData);
       setFormData({
         name: '',
         email: '',

@@ -1,23 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Users from './pages/Users';
-import AddUser from './pages/Adduser';
-import UserDetails from './pages/UserDetails';
-import './app.css';
+import AddUserPage from './pages/Adduser';
+import UserProvider from './context/UserContext'; // Import UserProvider
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/users/:id" element={<UserDetails />} />
-        <Route path="/add-user" element={<AddUser />} />
-      </Routes>
-    </Router>
+    <UserProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/add-user" element={<AddUserPage />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 };
 
